@@ -1,0 +1,28 @@
+:root {
+  --main-color-hue: 25;
+  --main-color: oklch(50% 0.18 25);
+  --main-color-shadow: oklch(45% 0.18 var(--main-color-hue));
+  --main-color-light: oklch(62% 0.18 var(--main-color-hue));
+}
+
+.markdown a[href^="http"]:after {
+  content: '↘';
+  margin-left: 0.25rem;
+  border: solid 1.5px currentColor;
+  font-weight: 300;
+  border-radius: 3px;
+  display: inline-block;
+  vertical-align: middle;
+  height: 12px;
+  width: 12px;
+  padding-left: 2px;
+  padding-top: 2px;
+  line-height: 13px;
+  font-size: 18px;
+  transform: scaleY(-0.75) scaleX(0.75);
+}
+
+.unlist-first > ul {
+  list-style-type: none;
+  padding-left: 0;
+}

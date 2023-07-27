@@ -1,0 +1,33 @@
+{
+  "name": "web-spacei",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev --port 3334",
+    "start": "astro dev --port 3334",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "thumbnails": "node ./generate_thumbnails.js"
+  },
+  "dependencies": {
+    "@astrojs/preact": "^2.2.1",
+    "@astrojs/vercel": "^3.4.0",
+    "@unocss/core": "^0.53.4",
+    "@unocss/preset-typography": "^0.53.4",
+    "@unocss/preset-web-fonts": "^0.53.4",
+    "@unocss/preset-wind": "^0.53.4",
+    "@unocss/reset": "^0.53.4",
+    "@unocss/transformer-variant-group": "^0.53.4",
+    "astro": "^2.5.1",
+    "classnames": "^2.3.2",
+    "dotenv": "^16.3.1",
+    "preact": "^10.6.5"
+  },
+  "devDependencies": {
+    "@rollup/plugin-yaml": "^4.1.1",
+    "@types/node": "^20.2.1",
+    "imagemagick": "^0.1.3",
+    "unocss": "^0.53.4"
+  }
+}

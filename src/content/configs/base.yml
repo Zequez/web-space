@@ -1,0 +1,26 @@
+language: 'en'
+baseDescription: Web Space Demo Site
+baseTitle: Web Space
+avatar: /assets/avatar.jpg
+avatarDescription: A robotic mandala of some sort; drawn by AI
+favicon: /assets/favicon.jpg
+layoutComponents:
+  - ArrarraNav
+navigation:
+  -
+    title: Home
+    path: '/'
+  -
+    title: About
+    path: '/about'
+  -
+    title: Blog
+    path: '/blog'
+  -
+    title: Contact
+    path: '/contact'
+socialLinks:
+  -
+    name: GitHub
+    url: https://github.com/zequez/web-space
+

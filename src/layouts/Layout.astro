@@ -1,0 +1,53 @@
+---
+import "./base.css";
+import { colors } from "@/lib/chroma";
+import { getEntry } from "astro:content";
+import * as layoutComponents from "../components/layout";
+import LayoutComponents from "./LayoutComponents.astro";
+const { data: config } = await getEntry("configs", "base");
+
+const { title, frontmatter, markdown } = Astro.props;
+
+const wrapForMarkdown = frontmatter?.markdown || markdown;
+
+let givenTitle = title || frontmatter?.title;
+let resolvedTitle = givenTitle ? `${givenTitle} | ${config.baseTitle}` : config.baseTitle;
+
+const pathname = new URL(Astro.request.url).pathname;
+const section = pathname.slice(1).split("/")[0];
+const color = colors[section as keyof typeof colors] || colors.about;
+
+const contentPaddingClass = config.layoutComponents
+  .map(
+    (comp) =>
+      (layoutComponents[comp as keyof typeof layoutComponents] as any).contentPaddingClass || ""
+  )
+  .join(" ");
+---
+
+<!DOCTYPE html>
+<html lang={config.language} class="h-full">
+  <head>
+    <style define:vars={{ mainColor: color }}></style>
+    <meta charset="UTF-8" />
+    <meta name="description" content={config.baseDescription} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/jpg" href={config.favicon} />
+    <meta property="og:image" content={config.avatar} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{resolvedTitle}</title>
+    <!-- <style set:html={`:root {--main-color: ${color};}`}></style>
+    <style>
+      :root {
+        --main-color: oklch(75% 0.3 180);
+      }
+    </style> -->
+  </head>
+  <body class="bg-gray-50 text-black/80 h-full">
+    <LayoutComponents />
+    <div class={`w-full h-full relative ${contentPaddingClass}`}>
+      <slot />
+    </div>
+  </body>
+</html>
+<style is:global></style>

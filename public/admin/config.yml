@@ -1,0 +1,23 @@
+backend:
+  name: github
+  repo: zequez/web-space # Path to your Github/Gitlab repository
+  branch: main # Branch to update
+  base_url: https://decap-cms-oauth.vercel.app
+  local_backend: true
+media_folder: public/assets
+collections:
+  -
+    name: "creations"
+    label: "Pages"
+    folder: "src/content/pages"
+    create: true
+    delete: true
+    fields:
+      -
+        name: title
+        widget: string
+        label: Title
+      -
+        name: path
+        widget: string
+        label: Path
